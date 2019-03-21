@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dennis\\source\\repos\\ItemShop\\Logic\\Logic.csproj",
+      "projectUniqueName": "D:\\Downloads\\Fontys\\Individueel\\ItemShop\\ItemShop\\Logic\\Logic.csproj",
       "projectName": "Logic",
-      "projectPath": "C:\\Users\\Dennis\\source\\repos\\ItemShop\\Logic\\Logic.csproj",
+      "projectPath": "D:\\Downloads\\Fontys\\Individueel\\ItemShop\\ItemShop\\Logic\\Logic.csproj",
       "packagesPath": "C:\\Users\\Dennis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dennis\\source\\repos\\ItemShop\\Logic\\obj\\",
+      "outputPath": "D:\\Downloads\\Fontys\\Individueel\\ItemShop\\ItemShop\\Logic\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
