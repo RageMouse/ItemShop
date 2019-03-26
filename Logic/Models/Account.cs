@@ -7,20 +7,20 @@ namespace Logic.Models
 {
     public class Account : IAccount
     {
-        private string Name { get; set; }
-        private bool Gamemaster { get; set; }
-        private string Password { get; set; }
-        private bool Active { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; }
+        public bool Gamemaster { get; set; }
+        public bool Active { get; set; }
 
         public Account()
         {
         }
 
-        public Account(string name, bool gamemaster, string password, bool active)
+        public Account(string name, string password, bool gamemaster, bool active)
         {
             Name = name;
-            Gamemaster = gamemaster;
             Password = password;
+            Gamemaster = gamemaster;
             Active = active;
         }
     }
