@@ -1,25 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Logic.Interfaces;
 
 namespace Logic.Models
 {
-    public class Account
+    public class Account : IAccount
     {
         private string Name { get; set; }
-        private bool Type { get; set; }
+        private bool Gamemaster { get; set; }
         private string Password { get; set; }
+        private bool Active { get; set; }
 
         public Account()
         {
-
         }
 
-        public Account(string name, bool type, string password)
+        public Account(string name, bool gamemaster, string password, bool active)
         {
             Name = name;
-            Type = type;
+            Gamemaster = gamemaster;
             Password = password;
+            Active = active;
         }
     }
 }

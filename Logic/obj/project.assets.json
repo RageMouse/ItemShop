@@ -207,6 +207,16 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "DAL.Interface/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "compile": {
+          "bin/placeholder/DAL.Interface.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DAL.Interface.dll": {}
+        }
       }
     }
   },
@@ -680,10 +690,16 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "DAL.Interface/1.0.0": {
+      "type": "project",
+      "path": "../DAL.Interface/DAL.Interface.csproj",
+      "msbuildProject": "../DAL.Interface/DAL.Interface.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "DAL.Interface >= 1.0.0",
       "Microsoft.NETCore.App >= 2.1.0"
     ]
   },
@@ -716,7 +732,11 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Downloads\\Fontys\\Individueel\\ItemShop\\ItemShop\\DAL.Interface\\DAL.Interface.csproj": {
+              "projectPath": "D:\\Downloads\\Fontys\\Individueel\\ItemShop\\ItemShop\\DAL.Interface\\DAL.Interface.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
