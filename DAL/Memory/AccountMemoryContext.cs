@@ -13,6 +13,11 @@ namespace DAL.Memory
             throw new NotImplementedException();
         }
 
+        public void RemoveAccount(AccountDTO account)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<AccountDTO> GetAllAccounts()
         {
             throw new NotImplementedException();

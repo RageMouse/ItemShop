@@ -8,6 +8,7 @@ namespace DAL.Interface.Interfaces
     public interface IAccountContext
     {
         void CreateAccount(AccountDTO account);
+        void RemoveAccount(AccountDTO account);
         List<AccountDTO> GetAllAccounts();
         AccountDTO GetById(int id);
     }
