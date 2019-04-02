@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Configuration;
 using System.Data.Common;
+using System.Linq;
 using DAL.Interface.DTOs;
 using DAL.Interface.Interfaces;
 
@@ -68,7 +69,44 @@ namespace DAL.MSSQL
 
         public AccountDTO GetById(int id)
         {
-            throw new NotImplementedException();
+            List<AccountDTO> accounts = new List<AccountDTO>();
+            AccountDTO account;
+            try
+            {
+                using (SqlConnection con = Database.getConnection())
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand("GetAccountById", con)
+                        {CommandType = CommandType.StoredProcedure})
+                    {
+                        cmd.Parameters.AddWithValue("@accountId", id);
+
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            foreach (DbDataRecord record in reader)
+                            {
+                                account = new AccountDTO(
+                                    record.GetInt32(record.GetOrdinal("AccountId")),
+                                    record.GetString(record.GetOrdinal("Name")),
+                                    record.GetString(record.GetOrdinal("Password")),
+                                    record.GetBoolean(record.GetOrdinal("Gamemaster")),
+                                    record.GetBoolean(record.GetOrdinal("Active"))
+                                );
+                                accounts.Add(account);
+                            }
+                        }
+                    }
+                }
+
+                account = accounts.Single(u => u.AccountId == id);
+                return account;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         public void RemoveAccount(AccountDTO account)

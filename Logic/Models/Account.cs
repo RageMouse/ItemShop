@@ -7,7 +7,7 @@ namespace Logic.Models
 {
     public class Account : IAccount
     {
-        public  int AccountId { get; set; }
+        public  int AccountId { get; private set; }
         public string Name { get; set; }
         public string Password { get; set; }
         public bool Gamemaster { get; set; }
