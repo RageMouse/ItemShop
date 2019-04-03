@@ -64,5 +64,10 @@ namespace Logic.Collections
 
             return new Account(accountDto.AccountId, accountDto.Name, accountDto.Gamemaster, accountDto.Active);
         }
+
+        public void Update(Account account)
+        {
+            _accountContext.Update(new AccountDTO(account.AccountId, account.Name, account.Password, account.Gamemaster, account.Active));
+        }
     }
 }

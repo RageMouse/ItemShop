@@ -11,5 +11,6 @@ namespace DAL.Interface.Interfaces
         void RemoveAccount(AccountDTO account);
         List<AccountDTO> GetAllAccounts();
         AccountDTO GetById(int id);
+        void Update(AccountDTO account);
     }
 }

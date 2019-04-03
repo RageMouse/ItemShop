@@ -10,5 +10,6 @@ namespace Logic.Interfaces
         void CreateAccount(Account account);
         List<Account> GetAllAccounts();
         Account GetById(int id);
+        void Update(Account account);
     }
 }

@@ -113,5 +113,32 @@ namespace DAL.MSSQL
         {
             throw new NotImplementedException();
         }
+
+        public void Update(AccountDTO account)
+        {
+            try
+            {
+                using (SqlConnection con = Database.getConnection())
+                {
+                    con.Open();
+                    using (SqlCommand command = new SqlCommand("UpdateAccount", con))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("AccountId", account.AccountId);
+                        command.Parameters.AddWithValue("Name", account.Name);
+                        command.Parameters.AddWithValue("Gamemaster", account.Gamemaster);
+                        command.Parameters.AddWithValue("Active", account.Active);
+                        command.ExecuteNonQuery();
+                    }
+
+                    con.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                //todo a good exception
+                Console.WriteLine(e);
+            }
+        }
     }
 }

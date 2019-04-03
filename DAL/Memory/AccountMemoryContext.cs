@@ -27,5 +27,10 @@ namespace DAL.Memory
         {
             throw new NotImplementedException();
         }
+
+        public void Update(AccountDTO account)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
