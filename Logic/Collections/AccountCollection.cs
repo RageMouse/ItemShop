@@ -42,7 +42,7 @@ namespace Logic.Collections
                 throw new ArgumentOutOfRangeException();
             }
 
-            return new Account(account.Name, account.Password, account.Gamemaster, account.Active);
+            return new Account(account.AccountId, account.Name, account.Password, account.Gamemaster, account.Active);
         }
 
         public List<Account> GetAllAccounts()
@@ -63,6 +63,11 @@ namespace Logic.Collections
             AccountDTO accountDto = _accountContext.GetById(id);
 
             return new Account(accountDto.AccountId, accountDto.Name, accountDto.Gamemaster, accountDto.Active);
+        }
+
+        public void Update(Account account)
+        {
+            _accountContext.Update(new AccountDTO(account.AccountId, account.Name, account.Password, account.Gamemaster, account.Active));
         }
     }
 }

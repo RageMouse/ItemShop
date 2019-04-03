@@ -21,9 +21,9 @@ namespace ItemShop.Controllers
         }
         public IActionResult Index()
         {
-            //ShowAllAccountsViewModel model = new ShowAllAccountsViewModel();
-            //model.Accounts = _accountFactory.AccountCollection().GetAllAccounts();
-            return View();
+            ShowAllAccountsViewModel model = new ShowAllAccountsViewModel();
+            model.Accounts = _accountFactory.AccountCollection().GetAllAccounts();
+            return View(model);
         }
 
         [HttpGet]
@@ -45,7 +45,7 @@ namespace ItemShop.Controllers
 
             ShowAllAccountsViewModel model = new ShowAllAccountsViewModel()
             {
-                AccountId = account.AccountId,
+                AccountId = id,
                 Name = account.Name,
                 Password = account.Password,
                 Active = account.Active,
@@ -53,6 +53,15 @@ namespace ItemShop.Controllers
             };
 
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult SaveEdit(ShowAllAccountsViewModel model)
+        {
+            IAccountCollection accountCollection = _accountFactory.AccountCollection();
+            accountCollection.Update(new Account(model.AccountId, model.Name, model.Password, model.Gamemaster, model.Active));
+
+            return RedirectToAction("Index", "Account");
         }
     }
 }
