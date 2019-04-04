@@ -5,7 +5,7 @@ using Logic.Interfaces;
 
 namespace Logic.Models
 {
-    public class Account : IAccount
+    public class Account
     {
         public  int AccountId { get; private set; }
         public string Name { get; set; }

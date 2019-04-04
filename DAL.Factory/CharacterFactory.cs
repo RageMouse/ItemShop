@@ -6,34 +6,33 @@ using DAL.Memory;
 using DAL.MSSQL;
 using Logic.Collections;
 using Logic.Interfaces;
-using Logic.Models;
 using Microsoft.Extensions.Configuration;
 
 namespace DAL.Factory
 {
-    public class AccountFactory
+    public class CharacterFactory
     {
         private readonly string _context;
 
-        public AccountFactory(IConfiguration configuration)
+        public CharacterFactory(IConfiguration configuration)
         {
             _context = configuration.GetSection("Database").GetSection("Type").Value;
             configuration.GetConnectionString(_context);
         }
 
-        private IAccountContext GeAccountContext()
+        private ICharacterContext GetCharacterContext()
         {
             switch (_context)
             {
                 case "MSSQL":
-                    return new AccountMSSQLContext();
+                    return new CharacterMSSQLContext();
                 case "MEMORY":
-                    return new AccountMemoryContext();
+                    return new CharacterMemoryContext();
                 default:
                     throw new NotImplementedException();
             }
         }
 
-        public IAccountCollection AccountCollection() => new AccountCollection(GeAccountContext());
+        public ICharacterCollection CharacterCollection() => new CharacterCollection(GetCharacterContext());
     }
 }

@@ -1,0 +1,32 @@
+﻿@using Logic.Models
+@model ItemShop.Models.ShowAllCharactersViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<h4>Characters</h4>
+<hr />
+
+<input type="text" id="myInput" onkeyup="SearchAccountName()" placeholder="Search for your character.." title="Type in a character name">
+<table id="adminTable" class="table table-hover table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Character character in Model.Characters)
+        {
+            <tr>
+                <td>@character.Name</td>
+                <td>@character.Role</td>
+                <td><a asp-action="Details" asp-controller="Character" asp-route-id="@character.CharacterId">DETAILS</a></td>
+                <td><a asp-action="Edit" asp-controller="Character" asp-route-id="@character.CharacterId">EDIT</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

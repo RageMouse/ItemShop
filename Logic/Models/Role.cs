@@ -8,16 +8,18 @@ namespace Logic.Models
     {
         public string Name { get; private set; }
         public string Description { get; private set; }
+        public string RoleType { get; private set; }
 
         public Role()
         {
 
         }
 
-        public Role(string name, string description)
+        public Role(string name, string description, string roleType)
         {
             Name = name;
             Description = description;
+            RoleType = roleType;
         }
     }
 }

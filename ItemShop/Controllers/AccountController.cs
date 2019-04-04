@@ -55,6 +55,22 @@ namespace ItemShop.Controllers
             return View(model);
         }
 
+        public IActionResult Details(int id)
+        {
+            Account account = _accountFactory.AccountCollection().GetById(id);
+
+            ShowAllAccountsViewModel model = new ShowAllAccountsViewModel()
+            {
+                AccountId = id,
+                Name = account.Name,
+                Password = account.Password,
+                Active = account.Active,
+                Gamemaster = account.Gamemaster
+            };
+
+            return View(model);
+        }
+
         [HttpPost]
         public IActionResult SaveEdit(ShowAllAccountsViewModel model)
         {
