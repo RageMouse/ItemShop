@@ -126,6 +126,7 @@ namespace DAL.MSSQL
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("AccountId", account.AccountId);
                         command.Parameters.AddWithValue("Name", account.Name);
+                        command.Parameters.AddWithValue("Password", account.Password);
                         command.Parameters.AddWithValue("Gamemaster", account.Gamemaster);
                         command.Parameters.AddWithValue("Active", account.Active);
                         command.ExecuteNonQuery();
