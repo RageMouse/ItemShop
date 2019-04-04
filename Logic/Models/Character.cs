@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Logic.Models
 {
-    class Character
+    public class Character
     {
         public int CharacterId { get; private set; }
         public string Name { get; set; }
