@@ -62,7 +62,7 @@ namespace Logic.Collections
         {
             AccountDTO accountDto = _accountContext.GetById(id);
 
-            return new Account(accountDto.AccountId, accountDto.Name, accountDto.Gamemaster, accountDto.Active);
+            return new Account(accountDto.AccountId, accountDto.Name, accountDto.Password, accountDto.Gamemaster, accountDto.Active);
         }
 
         public void Update(Account account)

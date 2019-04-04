@@ -21,6 +21,7 @@
         <th>Password</th>
         <th>Gamemaster</th>
         <th>Active</th>
+        <th>Details</th>
         <th>Edit</th>
     </tr>
     </thead>
@@ -32,6 +33,7 @@
             <td>@account.Password</td>
             <td>@account.Gamemaster</td>
             <td>@account.Active</td>
+            <td><a asp-action="Details" asp-controller="Account" asp-route-id="@account.AccountId">DETAILS</a></td>
             <td><a asp-action="Edit" asp-controller="Account" asp-route-id="@account.AccountId">EDIT</a></td>
         </tr>
     }
