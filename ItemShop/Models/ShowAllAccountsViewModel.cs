@@ -9,8 +9,8 @@ namespace ItemShop.Models
 {
     public class ShowAllAccountsViewModel
     {
-        public int AccountId { get; private set; }
-        public string Name { get; private set; }
+        public int AccountId { get; set; }
+        public string Name { get; set; }
         public string Password { get;  set; }
         public bool Gamemaster { get;  set; }
         public bool Active { get;  set; }
