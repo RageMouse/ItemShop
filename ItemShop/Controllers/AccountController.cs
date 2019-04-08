@@ -19,6 +19,7 @@ namespace ItemShop.Controllers
         {
             _accountFactory = new AccountFactory(configuration);
         }
+
         public IActionResult Index()
         {
             ShowAllAccountsViewModel model = new ShowAllAccountsViewModel();
@@ -35,7 +36,8 @@ namespace ItemShop.Controllers
         public IActionResult CreateNewAccount(CreateAccounViewModel model)
         {
             IAccountCollection accountCollection = _accountFactory.AccountCollection();
-            accountCollection.CreateAccount(new Account(model.Name, model.Password, model.IsGamemaster, model.IsActive));
+            accountCollection.CreateAccount(new Account(model.Name, model.Password, model.IsGamemaster,
+                model.IsActive));
             return RedirectToAction("Index", "Account");
         }
 
@@ -75,9 +77,15 @@ namespace ItemShop.Controllers
         public IActionResult SaveEdit(ShowAllAccountsViewModel model)
         {
             IAccountCollection accountCollection = _accountFactory.AccountCollection();
-            accountCollection.Update(new Account(model.AccountId, model.Name, model.Password, model.Gamemaster, model.Active));
+            accountCollection.Update(new Account(model.AccountId, model.Name, model.Password, model.Gamemaster,
+                model.Active));
 
             return RedirectToAction("Index", "Account");
+        }
+
+        public IActionResult CreateNewCharacter()
+        {
+            return RedirectToAction("CreateNewCharacter", "Character");
         }
     }
 }

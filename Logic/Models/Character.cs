@@ -23,5 +23,11 @@ namespace Logic.Models
             Role = role;
             RoleId = roleId;
         }
+
+        public Character(string name, int roleId)
+        {
+            Name = name;
+            RoleId = roleId;
+        }
     }
 }

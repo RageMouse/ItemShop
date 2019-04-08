@@ -1,7 +1,7 @@
 ﻿@model ItemShop.Models.ShowAllAccountsViewModel
 
 @{
-    ViewData["Title"] = "View";
+    ViewData["Title"] = "Details";
 }
 
 <h2>View</h2>
@@ -46,7 +46,9 @@
     <h4>Characters</h4>
     <hr />
     <div class="alert alert-info" role="alert">There are no Characters detected, want to make one?</div>
-
+    <p>
+        <a class="btn btn-danger" role="button" aria-pressed="true" asp-action="CreateNewCharacter">CREATE NEW</a>
+    </p>
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |

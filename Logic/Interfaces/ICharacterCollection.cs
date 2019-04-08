@@ -7,7 +7,7 @@ namespace Logic.Interfaces
 {
     public interface ICharacterCollection
     {
-        void CreateCharacter(Account account);
+        void CreateCharacter(Character character);
         List<Character> GetAllCharacters();
         Character GetById(int id);
         void Update(Character character);

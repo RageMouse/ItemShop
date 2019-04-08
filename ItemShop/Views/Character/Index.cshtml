@@ -19,7 +19,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (Character character in Model.Characters)
+        @*@foreach (Character character in Model.Characters)
         {
             <tr>
                 <td>@character.Name</td>
@@ -27,6 +27,6 @@
                 <td><a asp-action="Details" asp-controller="Character" asp-route-id="@character.CharacterId">DETAILS</a></td>
                 <td><a asp-action="Edit" asp-controller="Character" asp-route-id="@character.CharacterId">EDIT</a></td>
             </tr>
-        }
+        }*@
     </tbody>
 </table>

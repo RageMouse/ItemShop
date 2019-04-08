@@ -18,5 +18,13 @@ namespace DAL.Interface.DTOs
             Role = role;
             RoleId = roleId;
         }
+
+        public CharacterDTO(string name, int roleId)
+        {
+            CharacterId = 0;
+            Name = name;
+            Role = "";
+            RoleId = roleId;
+        }
     }
 }

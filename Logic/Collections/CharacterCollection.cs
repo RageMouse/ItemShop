@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DAL.Interface.DTOs;
 using DAL.Interface.Interfaces;
 using Logic.Interfaces;
 using Logic.Models;
@@ -16,9 +17,15 @@ namespace Logic.Collections
             _characterContext = context;
         }
 
-        public void CreateCharacter(Account account)
+        public void CreateCharacter(Character character)
         {
-            throw new NotImplementedException();
+            int maxLength = 25;
+            if (maxLength < character.Name.Length || string.IsNullOrEmpty(character.Name))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            _characterContext.CreateAccount(new CharacterDTO(character.Name, character.RoleId));
         }
 
         public List<Character> GetAllCharacters()
