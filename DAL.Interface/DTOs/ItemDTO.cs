@@ -9,9 +9,9 @@ namespace DAL.Interface.DTOs
         public readonly string Name;
         public readonly int Bonus;
         public readonly string Description;
-        public readonly bool Type;
+        public readonly string Type;
 
-        public ItemDTO(string name, int bonus, string description, bool type)
+        public ItemDTO(string name, int bonus, string description, string type)
         {
             Name = name;
             Bonus = bonus;
