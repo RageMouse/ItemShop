@@ -6,6 +6,7 @@ namespace Logic.Models
 {
     public class Item
     {
+        public int Id { get; private set; }
         public string Name { get; private set; }
         public int Bonus { get; private set; }
         public string Description { get; private set; }
@@ -16,8 +17,9 @@ namespace Logic.Models
 
         }
 
-        public Item(string name, int bonus, string description, string type)
+        public Item(int id ,string name, int bonus, string description, string type)
         {
+            Id = id;
             Name = name;
             Bonus = bonus;
             Description = description;
