@@ -7,10 +7,10 @@ namespace Logic.Models
     public class Item
     {
         public int ItemId { get; private set; }
-        public string Name { get; private set; }
-        public int Bonus { get; private set; }
-        public string Description { get; private set; }
-        public string Type { get; private set; }
+        public string Name { get; set; }
+        public int Bonus { get; set; }
+        public string Description { get; set; }
+        public string Type { get; set; }
 
         public Item()
         {

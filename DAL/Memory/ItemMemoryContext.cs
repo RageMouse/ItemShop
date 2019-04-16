@@ -18,7 +18,7 @@ namespace DAL.Memory
             throw new NotImplementedException();
         }
 
-        public ItemDTO GetById(int id)
+        public ItemDTO GetByName(string name)
         {
             throw new NotImplementedException();
         }

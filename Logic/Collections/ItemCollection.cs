@@ -29,7 +29,6 @@ namespace Logic.Collections
 
         public void CreateItem(Item item)
         {
-            int maxLength = 25;
             if (string.IsNullOrEmpty(item.Name))
             {
                 throw new ArgumentOutOfRangeException();
@@ -51,9 +50,11 @@ namespace Logic.Collections
             return items;
         }
 
-        public Item GetById(int id)
+        public Item GetByName(string name)
         {
-            throw new NotImplementedException();
+            ItemDTO itemDto = _itemContext.GetByName(name);
+
+            return new Item(itemDto.Name, itemDto.Bonus, itemDto.Description, itemDto.Type);
         }
 
         public void Update(Item item)
