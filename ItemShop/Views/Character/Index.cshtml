@@ -11,7 +11,7 @@
 <hr />
 
 <div class="mb-3">
-    <input class="form-control" type="text" id="myInput" onkeyup="SearchAccountName()" placeholder="Search for your character.." title="Type in a character name">
+    <input class="form-control" type="text" id="myInput" onkeyup="SearchBar()" placeholder="Search for your character.." title="Type in a character name">
 </div>
 <table id="adminTable" class="table table-hover table-striped">
     <thead class="thead-dark">
@@ -26,8 +26,8 @@
             <tr>
                 <td>@character.Name</td>
                 <td>@character.Role</td>
-                <td><a asp-action="Details" asp-controller="Character" asp-route-id="@character.CharacterId">DETAILS</a></td>
-                <td><a asp-action="Edit" asp-controller="Character" asp-route-id="@character.CharacterId">EDIT</a></td>
+                <td><a asp-action="Details" asp-controller="Character" asp-route-id="@character.CharacterId">DETAILS</a>  |
+                <a asp-action="Edit" asp-controller="Character" asp-route-id="@character.CharacterId">EDIT</a></td>
             </tr>
         }*@
     </tbody>
