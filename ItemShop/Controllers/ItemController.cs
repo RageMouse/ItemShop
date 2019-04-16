@@ -54,5 +54,29 @@ namespace ItemShop.Controllers
 
             return View(model);
         }
+
+        public IActionResult Edit(string name)
+        {
+            Item item = _itemFactory.ItemCollection().GetByName(name);
+
+            ShowAllItemsViewModel model = new ShowAllItemsViewModel()
+            {
+                Name = item.Name,
+                Bonus = item.Bonus,
+                Description = item.Description,
+                Type = item.Type
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult SaveEdit(ShowAllItemsViewModel model)
+        {
+            IItemCollection accountCollection = _itemFactory.ItemCollection();
+            accountCollection.Update(new Item(model.Name, model.Bonus, model.Description, model.Type));
+
+            return RedirectToAction("Index", "Item");
+        }
     }
 }

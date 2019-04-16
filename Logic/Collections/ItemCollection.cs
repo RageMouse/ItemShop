@@ -59,7 +59,7 @@ namespace Logic.Collections
 
         public void Update(Item item)
         {
-            throw new NotImplementedException();
+            _itemContext.Update(new ItemDTO(item.Name, item.Bonus, item.Description, item.Type));
         }
     }
 }
