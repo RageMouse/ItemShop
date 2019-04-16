@@ -17,6 +17,16 @@ namespace Logic.Collections
             _itemContext = context;
         }
 
+        internal Item ConvertItem(ItemDTO item)
+        {
+            if (string.IsNullOrEmpty(item.Name))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            return new Item(item.ItemId, item.Name, item.Bonus, item.Description, item.Type);
+        }
+
         public void CreateItem(Item item)
         {
             int maxLength = 25;
@@ -30,7 +40,15 @@ namespace Logic.Collections
 
         public List<Item> GetAllItems()
         {
-            throw new NotImplementedException();
+            List<Item> items = new List<Item>();
+
+            foreach (ItemDTO itemDto in _itemContext.GetAllItems())
+            {
+                Item item = ConvertItem(itemDto);
+                items.Add(item);
+            }
+
+            return items;
         }
 
         public Item GetById(int id)
