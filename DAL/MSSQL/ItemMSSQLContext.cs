@@ -110,7 +110,29 @@ namespace DAL.MSSQL
 
         public void Update(ItemDTO item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (SqlConnection con = Database.getConnection())
+                {
+                    con.Open();
+                    using (SqlCommand command = new SqlCommand("UpdateItem", con))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("Name", item.Name);
+                        command.Parameters.AddWithValue("Bonus", item.Bonus);
+                        command.Parameters.AddWithValue("Description", item.Description);
+                        command.Parameters.AddWithValue("Type", item.Type);
+                        command.ExecuteNonQuery();
+                    }
+
+                    con.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                //todo a good exception
+                Console.WriteLine(e);
+            }
         }
     }
 }
