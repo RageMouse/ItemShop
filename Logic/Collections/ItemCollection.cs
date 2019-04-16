@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DAL.Interface.DTOs;
 using DAL.Interface.Interfaces;
 using Logic.Interfaces;
 using Logic.Models;
@@ -16,14 +17,38 @@ namespace Logic.Collections
             _itemContext = context;
         }
 
+        internal Item ConvertItem(ItemDTO item)
+        {
+            if (string.IsNullOrEmpty(item.Name))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            return new Item(item.ItemId, item.Name, item.Bonus, item.Description, item.Type);
+        }
+
         public void CreateItem(Item item)
         {
-            throw new NotImplementedException();
+            int maxLength = 25;
+            if (string.IsNullOrEmpty(item.Name))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            _itemContext.CreateItem(new ItemDTO(item.Name, item.Bonus, item.Description, item.Type));
         }
 
         public List<Item> GetAllItems()
         {
-            throw new NotImplementedException();
+            List<Item> items = new List<Item>();
+
+            foreach (ItemDTO itemDto in _itemContext.GetAllItems())
+            {
+                Item item = ConvertItem(itemDto);
+                items.Add(item);
+            }
+
+            return items;
         }
 
         public Item GetById(int id)

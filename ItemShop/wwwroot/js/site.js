@@ -2,7 +2,7 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-function SearchAccountName() {
+function SearchBar() {
     // Declare variables
     var input, filter, table, tr, td, i;
     input = document.getElementById("myInput");
