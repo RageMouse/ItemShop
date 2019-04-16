@@ -9,7 +9,7 @@ namespace DAL.Interface.Interfaces
     {
         void CreateItem(ItemDTO item);
         List<ItemDTO> GetAllItems();
-        ItemDTO GetById(int id);
+        ItemDTO GetByName(string name);
         void Update(ItemDTO item);
     }
 }

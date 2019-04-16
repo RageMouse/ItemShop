@@ -38,5 +38,21 @@ namespace ItemShop.Controllers
             itemCollection.CreateItem(new Item(model.Name, model.Bonus, model.Description, model.Type));
             return RedirectToAction("Index", "Item");
         }
+
+        public IActionResult Details(string name)
+        {
+            Item item = _itemFactory.ItemCollection().GetByName(name);
+
+            ShowAllItemsViewModel model = new ShowAllItemsViewModel()
+            {
+                Name = item.Name,
+                Bonus = item.Bonus,
+                Description = item.Description,
+                Type = item.Type
+
+            };
+
+            return View(model);
+        }
     }
 }

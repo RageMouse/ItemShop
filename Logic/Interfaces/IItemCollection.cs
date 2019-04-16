@@ -9,7 +9,7 @@ namespace Logic.Interfaces
     {
         void CreateItem(Item item);
         List<Item> GetAllItems();
-        Item GetById(int id);
+        Item GetByName(string name);
         void Update(Item item);
     }
 }
