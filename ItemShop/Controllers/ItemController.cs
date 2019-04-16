@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using DAL.Factory;
 using ItemShop.Models;
+using Logic.Interfaces;
+using Logic.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
@@ -28,6 +30,13 @@ namespace ItemShop.Controllers
         public IActionResult CreateNewItem()
         {
             return View();
+        }
+
+        public IActionResult CreateNewItem(CreateItemViewModel model)
+        {
+            IItemCollection itemCollection = _itemFactory.ItemCollection();
+            itemCollection.CreateItem(new Item(model.Name, model.Bonus, model.Description, model.Type));
+            return RedirectToAction("Index", "Item");
         }
     }
 }
