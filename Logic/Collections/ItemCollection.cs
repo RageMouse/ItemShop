@@ -24,7 +24,7 @@ namespace Logic.Collections
                 throw new ArgumentOutOfRangeException();
             }
 
-            return new Item(item.ItemId, item.Name, item.Bonus, item.Description, item.Type);
+            return new Item(item.ItemId, item.Name, item.Description, item.Type, item.Unique);
         }
 
         public void CreateItem(Item item)
@@ -34,7 +34,7 @@ namespace Logic.Collections
                 throw new ArgumentOutOfRangeException();
             }
 
-            _itemContext.CreateItem(new ItemDTO(item.Name, item.Bonus, item.Description, item.Type));
+            _itemContext.CreateItem(new ItemDTO(item.Name, item.Description, item.Type, item.Unique));
         }
 
         public List<Item> GetAllItems()
@@ -54,12 +54,12 @@ namespace Logic.Collections
         {
             ItemDTO itemDto = _itemContext.GetByName(name);
 
-            return new Item(itemDto.Name, itemDto.Bonus, itemDto.Description, itemDto.Type);
+            return new Item(itemDto.Name, itemDto.Description, itemDto.Type, itemDto.Unique);
         }
 
         public void Update(Item item)
         {
-            _itemContext.Update(new ItemDTO(item.Name, item.Bonus, item.Description, item.Type));
+            _itemContext.Update(new ItemDTO(item.Name, item.Description, item.Type, item.Unique));
         }
     }
 }

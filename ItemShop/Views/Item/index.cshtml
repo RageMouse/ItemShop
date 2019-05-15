@@ -6,7 +6,7 @@
 
 <h2>Items</h2>
 
-<hr/>
+<hr />
 <p>
     <a class="btn btn-danger" role="button" aria-pressed="true" asp-action="CreateNewItem">CREATE NEW</a>
 </p>
@@ -17,9 +17,9 @@
     <thead class="thead-dark">
     <tr>
         <th>Name</th>
-        <th>Bonus</th>
         <th>Description</th>
         <th>Type</th>
+        <th>Unique</th>
         <th></th>
     </tr>
     </thead>
@@ -28,9 +28,9 @@
     {
         <tr>
             <td>@item.Name</td>
-            <td>@item.Bonus</td>
             <td>@item.Description</td>
             <td>@item.Type</td>
+            <td>@item.Unique</td>
             <td>
                 <a asp-action="Details" asp-controller="Item" asp-route-name="@item.Name">DETAILS</a> |
                 <a asp-action="Edit" asp-controller="Item" asp-route-name="@item.Name">EDIT</a>

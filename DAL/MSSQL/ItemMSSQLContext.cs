@@ -22,8 +22,8 @@ namespace DAL.MSSQL
                 {
                     cmd.Parameters.AddWithValue("@name", item.Name);
                     cmd.Parameters.AddWithValue("@description", item.Description);
-                    cmd.Parameters.AddWithValue("@bonus", item.Bonus);
                     cmd.Parameters.AddWithValue("@type", item.Type);
+                    cmd.Parameters.AddWithValue("@unique", item.Unique);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -46,9 +46,9 @@ namespace DAL.MSSQL
                             ItemDTO item = new ItemDTO(
                                 record.GetInt32(record.GetOrdinal("ItemId")),
                                 record.GetString(record.GetOrdinal("Name")),
-                                record.GetInt32(record.GetOrdinal("Bonus")),
                                 record.GetString(record.GetOrdinal("Description")),
-                                record.GetString(record.GetOrdinal("Type"))
+                                record.GetString(record.GetOrdinal("Type")),
+                                record.GetBoolean(record.GetOrdinal("Unique"))
                             );
                             items.Add(item);
                         }
@@ -76,7 +76,7 @@ namespace DAL.MSSQL
                 {
                     con.Open();
                     using (SqlCommand cmd = new SqlCommand("GetItemByName", con)
-                        { CommandType = CommandType.StoredProcedure })
+                        {CommandType = CommandType.StoredProcedure})
                     {
                         cmd.Parameters.AddWithValue("@itemName", name);
 
@@ -88,9 +88,9 @@ namespace DAL.MSSQL
                                 item = new ItemDTO(
                                     record.GetInt32(record.GetOrdinal("ItemId")),
                                     record.GetString(record.GetOrdinal("Name")),
-                                    record.GetInt32(record.GetOrdinal("Bonus")),
                                     record.GetString(record.GetOrdinal("Description")),
-                                    record.GetString(record.GetOrdinal("Type"))
+                                    record.GetString(record.GetOrdinal("Type")),
+                                    record.GetBoolean(record.GetOrdinal("Unique"))
                                 );
                                 items.Add(item);
                             }
@@ -115,14 +115,14 @@ namespace DAL.MSSQL
                 using (SqlConnection con = Database.getConnection())
                 {
                     con.Open();
-                    using (SqlCommand command = new SqlCommand("UpdateItem", con))
+                    using (SqlCommand cmd = new SqlCommand("UpdateItem", con))
                     {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("Name", item.Name);
-                        command.Parameters.AddWithValue("Bonus", item.Bonus);
-                        command.Parameters.AddWithValue("Description", item.Description);
-                        command.Parameters.AddWithValue("Type", item.Type);
-                        command.ExecuteNonQuery();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("Name", item.Name);
+                        cmd.Parameters.AddWithValue("Description", item.Description);
+                        cmd.Parameters.AddWithValue("Type", item.Type);
+                        cmd.Parameters.AddWithValue("Unique", item.Unique);
+                        cmd.ExecuteNonQuery();
                     }
 
                     con.Close();

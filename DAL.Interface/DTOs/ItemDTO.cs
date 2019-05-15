@@ -8,26 +8,26 @@ namespace DAL.Interface.DTOs
     {
         public readonly int ItemId;
         public readonly string Name;
-        public readonly int Bonus;
         public readonly string Description;
         public readonly string Type;
+        public readonly bool Unique;
 
-        public ItemDTO(int itemId, string name, int bonus, string description, string type)
+        public ItemDTO(int itemId, string name, string description, string type, bool unique)
         {
             ItemId = itemId;
             Name = name;
-            Bonus = bonus;
             Description = description;
             Type = type;
+            Unique = unique;
         }
 
-        public ItemDTO(string name, int bonus, string description, string type)
+        public ItemDTO(string name, string description, string type, bool unique)
         {
             ItemId = 0;
             Name = name;
-            Bonus = bonus;
             Description = description;
             Type = type;
+            Unique = unique;
         }
     }
 }
