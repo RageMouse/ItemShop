@@ -19,6 +19,7 @@ namespace ItemShop.Controllers
         {
             _itemFactory = new ItemFactory(configuration);
         }
+
         public IActionResult Index()
         {
             ShowAllItemsViewModel model = new ShowAllItemsViewModel();
@@ -35,7 +36,7 @@ namespace ItemShop.Controllers
         public IActionResult CreateNewItem(CreateItemViewModel model)
         {
             IItemCollection itemCollection = _itemFactory.ItemCollection();
-            itemCollection.CreateItem(new Item(model.Name, model.Bonus, model.Description, model.Type));
+            itemCollection.CreateItem(new Item(model.Name, model.Description, model.Type, model.IsUnique));
             return RedirectToAction("Index", "Item");
         }
 
@@ -46,10 +47,9 @@ namespace ItemShop.Controllers
             ShowAllItemsViewModel model = new ShowAllItemsViewModel()
             {
                 Name = item.Name,
-                Bonus = item.Bonus,
                 Description = item.Description,
-                Type = item.Type
-
+                Type = item.Type,
+                Unique = item.Unique
             };
 
             return View(model);
@@ -62,9 +62,9 @@ namespace ItemShop.Controllers
             ShowAllItemsViewModel model = new ShowAllItemsViewModel()
             {
                 Name = item.Name,
-                Bonus = item.Bonus,
                 Description = item.Description,
-                Type = item.Type
+                Type = item.Type,
+                Unique = item.Unique
             };
 
             return View(model);
@@ -74,7 +74,7 @@ namespace ItemShop.Controllers
         public IActionResult SaveEdit(ShowAllItemsViewModel model)
         {
             IItemCollection accountCollection = _itemFactory.ItemCollection();
-            accountCollection.Update(new Item(model.Name, model.Bonus, model.Description, model.Type));
+            accountCollection.Update(new Item(model.Name, model.Description, model.Type, model.Unique));
 
             return RedirectToAction("Index", "Item");
         }

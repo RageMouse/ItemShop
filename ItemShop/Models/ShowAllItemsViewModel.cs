@@ -9,9 +9,9 @@ namespace ItemShop.Models
     public class ShowAllItemsViewModel
     {
         public string Name { get; set; }
-        public int Bonus { get; set; }
         public string Description { get; set; }
         public string Type { get; set; }
+        public bool Unique { get; set; }
 
         public List<Item> Items { get; set; }
 
