@@ -121,7 +121,7 @@ namespace DAL.MSSQL
                         cmd.Parameters.AddWithValue("Name", item.Name);
                         cmd.Parameters.AddWithValue("Description", item.Description);
                         cmd.Parameters.AddWithValue("Type", item.Type);
-                        cmd.Parameters.AddWithValue("IsUnique", item.Unique);
+                        cmd.Parameters.AddWithValue("Unique", item.Unique);
                         cmd.ExecuteNonQuery();
                     }
 
