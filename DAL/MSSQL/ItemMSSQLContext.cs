@@ -48,7 +48,7 @@ namespace DAL.MSSQL
                                 record.GetString(record.GetOrdinal("Name")),
                                 record.GetString(record.GetOrdinal("Description")),
                                 record.GetString(record.GetOrdinal("Type")),
-                                record.GetBoolean(record.GetOrdinal("Unique"))
+                                record.GetBoolean(record.GetOrdinal("IsUnique"))
                             );
                             items.Add(item);
                         }
@@ -90,7 +90,7 @@ namespace DAL.MSSQL
                                     record.GetString(record.GetOrdinal("Name")),
                                     record.GetString(record.GetOrdinal("Description")),
                                     record.GetString(record.GetOrdinal("Type")),
-                                    record.GetBoolean(record.GetOrdinal("Unique"))
+                                    record.GetBoolean(record.GetOrdinal("IsUnique"))
                                 );
                                 items.Add(item);
                             }
@@ -121,7 +121,7 @@ namespace DAL.MSSQL
                         cmd.Parameters.AddWithValue("Name", item.Name);
                         cmd.Parameters.AddWithValue("Description", item.Description);
                         cmd.Parameters.AddWithValue("Type", item.Type);
-                        cmd.Parameters.AddWithValue("Unique", item.Unique);
+                        cmd.Parameters.AddWithValue("IsUnique", item.Unique);
                         cmd.ExecuteNonQuery();
                     }
 
