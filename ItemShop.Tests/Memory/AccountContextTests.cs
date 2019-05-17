@@ -19,5 +19,16 @@ namespace ItemShop.Test
             //Assert
             Assert.AreEqual(account, account);
         }
+
+        [TestMethod]
+        public void EditCharacter()
+        {
+            //Arrange
+            AccountCollection accountCollection = new AccountCollection(new AccountMemoryContext());
+            Account account = new Account(0, "John", true);
+            //Act
+            accountCollection.Update(account);
+            //Assert
+        }
     }
 }
