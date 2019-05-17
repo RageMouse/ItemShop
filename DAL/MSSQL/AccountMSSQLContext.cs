@@ -23,7 +23,6 @@ namespace DAL.MSSQL
                 {
                     cmd.Parameters.AddWithValue("@name", account.Name);
                     cmd.Parameters.AddWithValue("@password", account.Password);
-                    cmd.Parameters.AddWithValue("@isgamemaster", account.Gamemaster);
                     cmd.Parameters.AddWithValue("@isactive", account.Active);
 
                     cmd.ExecuteNonQuery();
@@ -48,7 +47,6 @@ namespace DAL.MSSQL
                                 record.GetInt32(record.GetOrdinal("AccountId")),
                                 record.GetString(record.GetOrdinal("Name")),
                                 record.GetString(record.GetOrdinal("Password")),
-                                record.GetBoolean(record.GetOrdinal("Gamemaster")),
                                 record.GetBoolean(record.GetOrdinal("Active"))
                             );
                             accounts.Add(character);
@@ -90,7 +88,6 @@ namespace DAL.MSSQL
                                     record.GetInt32(record.GetOrdinal("AccountId")),
                                     record.GetString(record.GetOrdinal("Name")),
                                     record.GetString(record.GetOrdinal("Password")),
-                                    record.GetBoolean(record.GetOrdinal("Gamemaster")),
                                     record.GetBoolean(record.GetOrdinal("Active"))
                                 );
                                 accounts.Add(account);
@@ -127,7 +124,6 @@ namespace DAL.MSSQL
                         command.Parameters.AddWithValue("AccountId", account.AccountId);
                         command.Parameters.AddWithValue("Name", account.Name);
                         command.Parameters.AddWithValue("Password", account.Password);
-                        command.Parameters.AddWithValue("Gamemaster", account.Gamemaster);
                         command.Parameters.AddWithValue("Active", account.Active);
                         command.ExecuteNonQuery();
                     }

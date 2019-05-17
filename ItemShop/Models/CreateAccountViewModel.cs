@@ -17,7 +17,7 @@ namespace ItemShop.Models
         [Display(Name = "Account password")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Password Required")]
         public string Password { get; set; }
-        public bool IsGamemaster { get; set; }
+
         public bool IsActive { get; set; }
     }
 }

@@ -25,8 +25,7 @@ namespace Logic.Collections
                 throw new ArgumentOutOfRangeException();
             }
 
-            _accountContext.CreateAccount(new AccountDTO(account.Name, account.Password, account.Gamemaster,
-                account.Active));
+            _accountContext.CreateAccount(new AccountDTO(account.Name, account.Password, account.Active));
         }
 
         public void DeleteAccount(AccountDTO account)
@@ -42,7 +41,7 @@ namespace Logic.Collections
                 throw new ArgumentOutOfRangeException();
             }
 
-            return new Account(account.AccountId, account.Name, account.Password, account.Gamemaster, account.Active);
+            return new Account(account.AccountId, account.Name, account.Password, account.Active);
         }
 
         public List<Account> GetAllAccounts()
@@ -62,12 +61,12 @@ namespace Logic.Collections
         {
             AccountDTO accountDto = _accountContext.GetById(id);
 
-            return new Account(accountDto.AccountId, accountDto.Name, accountDto.Password, accountDto.Gamemaster, accountDto.Active);
+            return new Account(accountDto.AccountId, accountDto.Name, accountDto.Password, accountDto.Active);
         }
 
         public void Update(Account account)
         {
-            _accountContext.Update(new AccountDTO(account.AccountId, account.Name, account.Password, account.Gamemaster, account.Active));
+            _accountContext.Update(new AccountDTO(account.AccountId, account.Name, account.Password, account.Active));
         }
     }
 }
