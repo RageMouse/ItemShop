@@ -17,6 +17,7 @@ namespace ItemShop.Controllers
         {
             _itemFactory = new ItemFactory(configuration);
         }
+
         public IActionResult Index()
         {
             ShowAllItemsViewModel model = new ShowAllItemsViewModel();

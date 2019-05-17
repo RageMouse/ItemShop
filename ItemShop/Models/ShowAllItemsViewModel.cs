@@ -17,7 +17,6 @@ namespace ItemShop.Models
 
         public ShowAllItemsViewModel()
         {
-
         }
 
         public ShowAllItemsViewModel(List<Item> items)

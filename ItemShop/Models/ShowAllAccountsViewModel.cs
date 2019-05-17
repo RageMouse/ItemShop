@@ -11,14 +11,13 @@ namespace ItemShop.Models
     {
         public int AccountId { get; set; }
         public string Name { get; set; }
-        public string Password { get;  set; }
-        public bool Active { get;  set; }
+        public string Password { get; set; }
+        public bool Active { get; set; }
 
         public List<Account> Accounts { get; set; }
 
         public ShowAllAccountsViewModel()
         {
-
         }
 
         public ShowAllAccountsViewModel(List<Account> accounts)

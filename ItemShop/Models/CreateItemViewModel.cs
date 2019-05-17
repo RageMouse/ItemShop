@@ -11,6 +11,7 @@ namespace ItemShop.Models
         [Display(Name = "Item Name")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Name Required")]
         public string Name { get; set; }
+
         public string Description { get; set; }
         public string Type { get; set; }
         public bool IsUnique { get; set; }

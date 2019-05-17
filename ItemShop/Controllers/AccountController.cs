@@ -19,6 +19,7 @@ namespace ItemShop.Controllers
         {
             _accountFactory = new AccountFactory(configuration);
         }
+
         public IActionResult Index()
         {
             ShowAllAccountsViewModel model = new ShowAllAccountsViewModel();

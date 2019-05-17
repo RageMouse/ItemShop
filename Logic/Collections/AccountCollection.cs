@@ -11,6 +11,7 @@ namespace Logic.Collections
     public class AccountCollection : IAccountCollection
     {
         private readonly IAccountContext _accountContext;
+        private const int MaxLengthAccountName = 25;
 
         public AccountCollection(IAccountContext context)
         {
@@ -19,8 +20,7 @@ namespace Logic.Collections
 
         public void CreateAccount(Account account)
         {
-            int maxLength = 25;
-            if (maxLength < account.Name.Length || string.IsNullOrEmpty(account.Name))
+            if (MaxLengthAccountName < account.Name.Length || string.IsNullOrEmpty(account.Name))
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -35,8 +35,7 @@ namespace Logic.Collections
 
         internal Account ConvertAccount(AccountDTO account)
         {
-            int maxLength = 20;
-            if (maxLength < account.Name.Length || string.IsNullOrEmpty(account.Name))
+            if (MaxLengthAccountName < account.Name.Length || string.IsNullOrEmpty(account.Name))
             {
                 throw new ArgumentOutOfRangeException();
             }

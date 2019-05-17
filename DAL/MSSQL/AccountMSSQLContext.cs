@@ -15,18 +15,27 @@ namespace DAL.MSSQL
     {
         public void CreateAccount(AccountDTO account)
         {
-            using (SqlConnection con = Database.getConnection())
+            try
             {
-                con.Open();
-                using (SqlCommand cmd = new SqlCommand("CreateAccount", con)
-                    {CommandType = CommandType.StoredProcedure})
+                using (SqlConnection con = Database.getConnection())
                 {
-                    cmd.Parameters.AddWithValue("@name", account.Name);
-                    cmd.Parameters.AddWithValue("@password", account.Password);
-                    cmd.Parameters.AddWithValue("@isactive", account.Active);
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand("CreateAccount", con)
+                        {CommandType = CommandType.StoredProcedure})
+                    {
+                        cmd.Parameters.AddWithValue("@name", account.Name);
+                        cmd.Parameters.AddWithValue("@password", account.Password);
+                        cmd.Parameters.AddWithValue("@isactive", account.Active);
 
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                //todo a good exception
+                Console.WriteLine(e);
+                throw;
             }
         }
 
@@ -60,6 +69,7 @@ namespace DAL.MSSQL
             }
             catch (Exception e)
             {
+                //todo a good exception
                 Console.WriteLine(e);
                 throw;
             }
@@ -68,9 +78,9 @@ namespace DAL.MSSQL
         public AccountDTO GetById(int id)
         {
             List<AccountDTO> accounts = new List<AccountDTO>();
-            AccountDTO account;
             try
             {
+                AccountDTO account;
                 using (SqlConnection con = Database.getConnection())
                 {
                     con.Open();
@@ -101,6 +111,7 @@ namespace DAL.MSSQL
             }
             catch (Exception e)
             {
+                //todo a good exception
                 Console.WriteLine(e);
                 throw;
             }

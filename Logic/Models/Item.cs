@@ -6,11 +6,11 @@ namespace Logic.Models
 {
     public class Item
     {
-        public int ItemId { get; private set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Type { get; set; }
-        public bool Unique { get; set; }
+        public int ItemId { get; }
+        public string Name { get; }
+        public string Description { get; }
+        public string Type { get; }
+        public bool Unique { get; }
 
         public Item()
         {

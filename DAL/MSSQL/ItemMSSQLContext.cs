@@ -14,19 +14,28 @@ namespace DAL.MSSQL
     {
         public void CreateItem(ItemDTO item)
         {
-            using (SqlConnection con = Database.getConnection())
+            try
             {
-                con.Open();
-                using (SqlCommand cmd = new SqlCommand("CreateItem", con)
-                    {CommandType = CommandType.StoredProcedure})
+                using (SqlConnection con = Database.getConnection())
                 {
-                    cmd.Parameters.AddWithValue("@name", item.Name);
-                    cmd.Parameters.AddWithValue("@description", item.Description);
-                    cmd.Parameters.AddWithValue("@type", item.Type);
-                    cmd.Parameters.AddWithValue("@unique", item.Unique);
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand("CreateItem", con)
+                        {CommandType = CommandType.StoredProcedure})
+                    {
+                        cmd.Parameters.AddWithValue("@name", item.Name);
+                        cmd.Parameters.AddWithValue("@description", item.Description);
+                        cmd.Parameters.AddWithValue("@type", item.Type);
+                        cmd.Parameters.AddWithValue("@unique", item.Unique);
 
-                    cmd.ExecuteNonQuery();
+                        cmd.ExecuteNonQuery();
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                //todo a good exception
+                Console.WriteLine(e);
+                throw;
             }
         }
 
@@ -61,6 +70,7 @@ namespace DAL.MSSQL
             }
             catch (Exception e)
             {
+                //todo a good exception
                 Console.WriteLine(e);
                 throw;
             }
@@ -103,6 +113,7 @@ namespace DAL.MSSQL
             }
             catch (Exception e)
             {
+                //todo a good exception
                 Console.WriteLine(e);
                 throw;
             }
@@ -132,6 +143,7 @@ namespace DAL.MSSQL
             {
                 //todo a good exception
                 Console.WriteLine(e);
+                throw;
             }
         }
     }
