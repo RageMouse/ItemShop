@@ -9,24 +9,21 @@ namespace DAL.Interface.DTOs
         public readonly int AccountId;
         public readonly string Name;
         public readonly string Password;
-        public readonly bool Gamemaster;
         public readonly bool Active;
 
-        public AccountDTO(int accountId, string name, string password, bool gamemaster, bool active)
+        public AccountDTO(int accountId, string name, string password, bool active)
         {
             AccountId = accountId;
             Name = name;
             Password = password;
-            Gamemaster = gamemaster;
             Active = active;
         }
 
-        public AccountDTO(string name,  string password, bool gamemaster, bool active)
+        public AccountDTO(string name,  string password, bool active)
         {
             AccountId = 0;
             Name = name;
             Password = password;
-            Gamemaster = gamemaster;
             Active = true;
         }
     }
