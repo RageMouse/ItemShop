@@ -7,17 +7,17 @@ namespace DAL.Interface.DTOs
     public struct AuctionDTO
     {
         public readonly int AuctionId;
-        public readonly DateTime DateTime;
+        public readonly DateTime DateCreated;
         public readonly bool Sold;
         public readonly DateTime EndDateTime;
         public readonly int MinPrice;
         public readonly int BuyoutPrice;
         public readonly int ItemId;
 
-        public AuctionDTO(int auctionId, DateTime dateTime, bool sold, DateTime endDateTime, int minPrice, int buyoutPrice, int itemId)
+        public AuctionDTO(int auctionId, DateTime dateCreated, bool sold, DateTime endDateTime, int minPrice, int buyoutPrice, int itemId)
         {
             AuctionId = auctionId;
-            DateTime = dateTime;
+            DateCreated = dateCreated;
             Sold = sold;
             EndDateTime = endDateTime;
             MinPrice = minPrice;
@@ -25,10 +25,10 @@ namespace DAL.Interface.DTOs
             ItemId = itemId;
         }
 
-        public AuctionDTO(DateTime dateTime, bool sold, DateTime endDateTime, int minPrice, int buyoutPrice, int itemId)
+        public AuctionDTO(DateTime dateCreated, bool sold, DateTime endDateTime, int minPrice, int buyoutPrice, int itemId)
         {
             AuctionId = 0;
-            DateTime = dateTime;
+            DateCreated = dateCreated;
             Sold = sold;
             EndDateTime = endDateTime;
             MinPrice = minPrice;

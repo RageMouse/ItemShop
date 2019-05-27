@@ -8,5 +8,6 @@ namespace DAL.Interface.Interfaces
     public interface IAuctionContext
     {
         void CreateAuction(AuctionDTO auction);
+        AuctionDTO GetById(int id);
     }
 }

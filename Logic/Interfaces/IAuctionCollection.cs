@@ -8,5 +8,6 @@ namespace Logic.Interfaces
     public interface IAuctionCollection
     {
         void CreateAuction(Auction auction);
+        Auction GetById(int id);
     }
 }
