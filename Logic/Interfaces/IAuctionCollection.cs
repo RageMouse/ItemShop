@@ -9,5 +9,6 @@ namespace Logic.Interfaces
     {
         void CreateAuction(Auction auction);
         Auction GetById(int id);
+        void Update(Auction auction);
     }
 }
