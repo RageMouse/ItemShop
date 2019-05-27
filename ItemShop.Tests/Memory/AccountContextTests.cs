@@ -9,7 +9,7 @@ namespace ItemShop.Test.Memory
     public class AccountCollectionTest
     {
         [TestMethod]
-        public void AddCharacter()
+        public void AddAccount()
         {
             //Arrange
             AccountCollection accountCollection = new AccountCollection(new AccountMemoryContext());
@@ -17,11 +17,12 @@ namespace ItemShop.Test.Memory
             //Act
             accountCollection.CreateAccount(account);
             //Assert
+            //todo change the assert to make sense
             Assert.AreEqual(account, account);
         }
 
         [TestMethod]
-        public void EditCharacter()
+        public void EditAccount()
         {
             //Arrange
             AccountCollection accountCollection = new AccountCollection(new AccountMemoryContext());

@@ -12,5 +12,15 @@ namespace DAL.MSSQL
         {
             throw new NotImplementedException();
         }
+
+        public AuctionDTO GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(AuctionDTO auction)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

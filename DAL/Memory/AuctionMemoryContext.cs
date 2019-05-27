@@ -8,7 +8,19 @@ namespace DAL.Memory
 {
     public class AuctionMemoryContext : IAuctionContext
     {
-        public void CreateAuction(AuctionDTO auction)
+        public readonly List<AuctionDTO> _auctions = new List<AuctionDTO>();
+
+        public void CreateAuction(AuctionDTO auctionDto)
+        {
+            _auctions.Add(auctionDto);
+        }
+
+        public AuctionDTO GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(AuctionDTO auction)
         {
             throw new NotImplementedException();
         }
