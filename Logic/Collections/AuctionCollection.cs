@@ -21,5 +21,12 @@ namespace Logic.Collections
         {
             _auctionContext.CreateAuction(new AuctionDTO(auction.DateCreated, auction.Sold, auction.EndDateTime, auction.MinPrice, auction.BuyoutPrice, auction.ItemId));
         }
+
+        public Auction GetById(int id)
+        {
+            AuctionDTO auction = _auctionContext.GetById(id);
+
+            return new Auction(auction.AuctionId, auction.DateCreated, auction.Sold, auction.EndDateTime, auction.MinPrice, auction.BuyoutPrice, auction.ItemId);
+        }
     }
 }

@@ -24,5 +24,16 @@ namespace Logic.Models
             BuyoutPrice = buyoutPrice;
             ItemId = itemId;
         }
+
+        public Auction(DateTime dateCreated, bool sold, DateTime endDateTime, int minPrice, int buyoutPrice, int itemId)
+        {
+            AuctionId = 0;
+            DateCreated = dateCreated;
+            Sold = sold;
+            EndDateTime = endDateTime;
+            MinPrice = minPrice;
+            BuyoutPrice = buyoutPrice;
+            ItemId = itemId;
+        }
     }
 }
