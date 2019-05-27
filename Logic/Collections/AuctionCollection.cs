@@ -33,5 +33,10 @@ namespace Logic.Collections
         {
             _auctionContext.Update(new AuctionDTO(auction.DateCreated, auction.Sold, auction.EndDateTime, auction.MinPrice, auction.BuyoutPrice, auction.ItemId));
         }
+
+        internal Auction ConvertAuction(AuctionDTO auction)
+        {
+            return new Auction(auction.AuctionId, auction.DateCreated, auction.Sold, auction.EndDateTime, auction.MinPrice, auction.BuyoutPrice, auction.ItemId);
+        }
     }
 }
