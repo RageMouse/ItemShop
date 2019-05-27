@@ -9,5 +9,6 @@ namespace DAL.Interface.Interfaces
     {
         void CreateAuction(AuctionDTO auction);
         AuctionDTO GetById(int id);
+        void Update(AuctionDTO auction);
     }
 }
