@@ -1,9 +1,9 @@
-using Logic.Collections;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DAL.Memory;
+using Logic.Collections;
 using Logic.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ItemShop.Test
+namespace ItemShop.Test.Memory
 {
     [TestClass]
     public class AccountCollectionTest
