@@ -12,8 +12,9 @@ namespace Logic.Models
         public DateTime EndDateTime { get; }
         public int MinPrice { get; }
         public int BuyoutPrice { get; }
+        public int ItemId { get; }
 
-        public Auction(int auctionId, DateTime dateCreated, bool sold, DateTime endDateTime, int minPrice, int buyoutPrice)
+        public Auction(int auctionId, DateTime dateCreated, bool sold, DateTime endDateTime, int minPrice, int buyoutPrice, int itemId)
         {
             AuctionId = auctionId;
             DateCreated = dateCreated;
@@ -21,6 +22,7 @@ namespace Logic.Models
             EndDateTime = endDateTime;
             MinPrice = minPrice;
             BuyoutPrice = buyoutPrice;
+            ItemId = itemId;
         }
     }
 }
