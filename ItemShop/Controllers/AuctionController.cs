@@ -35,7 +35,7 @@ namespace ItemShop.Controllers
         {
             IAuctionCollection auctionCollection = _auctionFactory.AuctionCollection();
             //todo write this for creation of auctions
-            //auctionCollection.CreateAuction(new Auction(model.DateCreated, model.Sold, model.EndDateTime, model.MinPrice, model.BuyoutPrice, ));
+            //auctionCollection.AddAuction(new Auction(model.DateCreated, model.Sold, model.EndDateTime, model.MinPrice, model.BuyoutPrice, ));
             return RedirectToAction("Index", "Account");
         }
     }

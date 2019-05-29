@@ -19,7 +19,7 @@ namespace Logic.Collections
 
         public void CreateAuction(Auction auction)
         {
-            _auctionContext.CreateAuction(new AuctionDTO(auction.DateCreated, auction.Sold, auction.EndDateTime, auction.MinPrice, auction.BuyoutPrice, auction.ItemId));
+            _auctionContext.AddAuction(new AuctionDTO(auction.DateCreated, auction.Sold, auction.EndDateTime, auction.MinPrice, auction.BuyoutPrice, auction.ItemId));
         }
 
         public Auction GetById(int id)

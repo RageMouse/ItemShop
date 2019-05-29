@@ -10,7 +10,7 @@ namespace DAL.Memory
     {
         public readonly List<AuctionDTO> _auctions = new List<AuctionDTO>();
 
-        public void CreateAuction(AuctionDTO auctionDto)
+        public void AddAuction(AuctionDTO auctionDto)
         {
             _auctions.Add(auctionDto);
         }
