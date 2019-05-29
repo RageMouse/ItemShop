@@ -8,7 +8,7 @@ namespace DAL.MSSQL
 {
     public class AuctionMSSQLContext : IAuctionContext
     {
-        public void CreateAuction(AuctionDTO auction)
+        public void AddAuction(AuctionDTO auction)
         {
             throw new NotImplementedException();
         }

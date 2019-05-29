@@ -12,24 +12,15 @@ namespace ItemShop.Test.Memory
         public void AddAccount()
         {
             //Arrange
-            AccountCollection accountCollection = new AccountCollection(new AccountMemoryContext());
-            Account account = new Account(0, "John", true);
+            var memcontext = new AccountMemoryContext();
+            AccountCollection accountCollection = new AccountCollection(memcontext);
+            Account account = new Account(2, "John", "Password", true);
             //Act
             accountCollection.CreateAccount(account);
-            //Assert
-            //todo change the assert to make sense
-            Assert.AreEqual(account, account);
-        }
-
-        [TestMethod]
-        public void EditAccount()
-        {
-            //Arrange
-            AccountCollection accountCollection = new AccountCollection(new AccountMemoryContext());
-            Account account = new Account(0, "John", true);
-            //Act
-            accountCollection.Update(account);
-            //Assert
+            var auctionResult = memcontext._accounts.Find(a => a.Name == account.Name);
+            //Assert, Name together with Password is unique enough for this test.
+            Assert.AreEqual(auctionResult.Name, account.Name);
+            Assert.AreEqual(auctionResult.Password, account.Password);
         }
     }
 }

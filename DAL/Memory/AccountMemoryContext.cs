@@ -8,9 +8,11 @@ namespace DAL.Memory
 {
     public class AccountMemoryContext : IAccountContext
     {
+        public readonly List<AccountDTO> _accounts = new List<AccountDTO>();
+
         public void CreateAccount(AccountDTO account)
         {
-            throw new NotImplementedException();
+            _accounts.Add(account);
         }
 
         public void RemoveAccount(AccountDTO account)
