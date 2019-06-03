@@ -12,14 +12,21 @@ namespace DAL.MSSQL
 {
     public class ItemMSSQLContext : IItemContext
     {
+        private string _connString;
+
+        public ItemMSSQLContext(string connString)
+        {
+            _connString = connString;
+        }
+
         public void CreateItem(ItemDTO item)
         {
             try
             {
-                using (SqlConnection con = Database.getConnection())
+                using (var conn = new SqlConnection(_connString))
                 {
-                    con.Open();
-                    using (SqlCommand cmd = new SqlCommand("CreateItem", con)
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand("CreateItem", conn)
                         {CommandType = CommandType.StoredProcedure})
                     {
                         cmd.Parameters.AddWithValue("@name", item.Name);
@@ -44,10 +51,10 @@ namespace DAL.MSSQL
             List<ItemDTO> items = new List<ItemDTO>();
             try
             {
-                using (SqlConnection con = Database.getConnection())
+                using (var conn = new SqlConnection(_connString))
                 {
-                    con.Open();
-                    using (SqlCommand command = new SqlCommand("ShowAllItems", con)
+                    conn.Open();
+                    using (SqlCommand command = new SqlCommand("ShowAllItems", conn)
                         {CommandType = CommandType.StoredProcedure})
                     {
                         foreach (DbDataRecord record in command.ExecuteReader())
@@ -62,7 +69,7 @@ namespace DAL.MSSQL
                             items.Add(item);
                         }
 
-                        con.Close();
+                        conn.Close();
                     }
                 }
 
@@ -82,10 +89,10 @@ namespace DAL.MSSQL
             try
             {
                 ItemDTO item;
-                using (SqlConnection con = Database.getConnection())
+                using (var conn = new SqlConnection(_connString))
                 {
-                    con.Open();
-                    using (SqlCommand cmd = new SqlCommand("GetItemByName", con)
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand("GetItemByName", conn)
                         {CommandType = CommandType.StoredProcedure})
                     {
                         cmd.Parameters.AddWithValue("@itemName", name);
@@ -123,10 +130,10 @@ namespace DAL.MSSQL
         {
             try
             {
-                using (SqlConnection con = Database.getConnection())
+                using (var conn = new SqlConnection(_connString))
                 {
-                    con.Open();
-                    using (SqlCommand cmd = new SqlCommand("UpdateItem", con))
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand("UpdateItem", conn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("Name", item.Name);
@@ -136,7 +143,7 @@ namespace DAL.MSSQL
                         cmd.ExecuteNonQuery();
                     }
 
-                    con.Close();
+                    conn.Close();
                 }
             }
             catch (Exception e)

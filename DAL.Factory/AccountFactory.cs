@@ -14,11 +14,12 @@ namespace DAL.Factory
     public class AccountFactory
     {
         private readonly string _context;
+        private readonly string _connString;
 
         public AccountFactory(IConfiguration configuration)
         {
             _context = configuration.GetSection("Database").GetSection("Type").Value;
-            configuration.GetConnectionString(_context);
+            _connString = configuration.GetSection("ConnectionStrings").GetSection("ConnectionString").Value;
         }
 
         private IAccountContext GeAccountContext()
@@ -26,7 +27,7 @@ namespace DAL.Factory
             switch (_context)
             {
                 case "MSSQL":
-                    return new AccountMSSQLContext();
+                    return new AccountMSSQLContext("Server=mssql.fhict.local;Database=dbi387022;User Id=dbi387022;Password=yoloswag1337");
                 case "MEMORY":
                     return new AccountMemoryContext();
                 default:

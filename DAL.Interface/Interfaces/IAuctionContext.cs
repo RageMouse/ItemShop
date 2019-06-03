@@ -10,5 +10,6 @@ namespace DAL.Interface.Interfaces
         void AddAuction(AuctionDTO auction);
         AuctionDTO GetById(int id);
         void Update(AuctionDTO auction);
+        List<AuctionDTO> GetAllAuctions();
     }
 }

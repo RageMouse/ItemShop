@@ -38,5 +38,18 @@ namespace Logic.Collections
         {
             return new Auction(auction.AuctionId, auction.DateCreated, auction.Sold, auction.EndDateTime, auction.MinPrice, auction.BuyoutPrice, auction.ItemId);
         }
+
+        public List<Auction> GetAllAuctions()
+        {
+            List<Auction> auctions = new List<Auction>();
+
+            foreach (AuctionDTO auctionDto in _auctionContext.GetAllAuctions())
+            {
+                Auction auction = ConvertAuction(auctionDto);
+                auctions.Add(auction);
+            }
+
+            return auctions;
+        }
     }
 }

@@ -24,5 +24,10 @@ namespace DAL.Memory
         {
             throw new NotImplementedException();
         }
+
+        public List<AuctionDTO> GetAllAuctions()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

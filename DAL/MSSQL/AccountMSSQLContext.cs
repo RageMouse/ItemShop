@@ -13,14 +13,20 @@ namespace DAL.MSSQL
 {
     public class AccountMSSQLContext : IAccountContext
     {
+        private string _connString;
+
+        public AccountMSSQLContext(string connString)
+        {
+            _connString = connString;
+        }
         public void CreateAccount(AccountDTO account)
         {
             try
             {
-                using (SqlConnection con = Database.getConnection())
+                using (var conn = new SqlConnection(_connString))
                 {
-                    con.Open();
-                    using (SqlCommand cmd = new SqlCommand("CreateAccount", con)
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand("CreateAccount", conn)
                         {CommandType = CommandType.StoredProcedure})
                     {
                         cmd.Parameters.AddWithValue("@name", account.Name);
@@ -44,10 +50,10 @@ namespace DAL.MSSQL
             List<AccountDTO> accounts = new List<AccountDTO>();
             try
             {
-                using (SqlConnection con = Database.getConnection())
+                using (var conn = new SqlConnection(_connString))
                 {
-                    con.Open();
-                    using (SqlCommand command = new SqlCommand("ShowAllAccounts", con)
+                    conn.Open();
+                    using (SqlCommand command = new SqlCommand("ShowAllAccounts", conn)
                         {CommandType = CommandType.StoredProcedure})
                     {
                         foreach (DbDataRecord record in command.ExecuteReader())
@@ -60,8 +66,6 @@ namespace DAL.MSSQL
                             );
                             accounts.Add(character);
                         }
-
-                        con.Close();
                     }
                 }
 
@@ -81,10 +85,10 @@ namespace DAL.MSSQL
             try
             {
                 AccountDTO account;
-                using (SqlConnection con = Database.getConnection())
+                using (var conn = new SqlConnection(_connString))
                 {
-                    con.Open();
-                    using (SqlCommand cmd = new SqlCommand("GetAccountById", con)
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand("GetAccountById", conn)
                         {CommandType = CommandType.StoredProcedure})
                     {
                         cmd.Parameters.AddWithValue("@accountId", id);
@@ -126,10 +130,10 @@ namespace DAL.MSSQL
         {
             try
             {
-                using (SqlConnection con = Database.getConnection())
+                using (var conn = new SqlConnection(_connString))
                 {
-                    con.Open();
-                    using (SqlCommand command = new SqlCommand("UpdateAccount", con))
+                    conn.Open();
+                    using (SqlCommand command = new SqlCommand("UpdateAccount", conn))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("AccountId", account.AccountId);
@@ -138,8 +142,6 @@ namespace DAL.MSSQL
                         command.Parameters.AddWithValue("Active", account.Active);
                         command.ExecuteNonQuery();
                     }
-
-                    con.Close();
                 }
             }
             catch (Exception e)

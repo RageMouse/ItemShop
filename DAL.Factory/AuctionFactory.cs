@@ -13,11 +13,12 @@ namespace DAL.Factory
     public class AuctionFactory
     {
         private readonly string _context;
+        private readonly string _connString;
 
         public AuctionFactory(IConfiguration configuration)
         {
             _context = configuration.GetSection("Database").GetSection("Type").Value;
-            configuration.GetConnectionString(_context);
+            _connString = configuration.GetSection("ConnectionStrings").GetSection("ConnectionString").Value;
         }
 
         private IAuctionContext GetAuctionContext()
@@ -25,7 +26,7 @@ namespace DAL.Factory
             switch (_context)
             {
                 case "MSSQL":
-                    return new AuctionMSSQLContext();
+                    return new AuctionMSSQLContext(_connString);
                 case "MEMORY":
                     return new AuctionMemoryContext();
                 default:

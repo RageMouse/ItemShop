@@ -10,11 +10,16 @@ namespace Logic.Collections
 {
     public class MessageCollection : IMessageInterface
     {
-        private readonly IMessageContext _accountContext;
+        private readonly IMessageContext _messageContext;
+
+        public MessageCollection(IMessageContext messageContext)
+        {
+            _messageContext = messageContext;
+        }
 
         public void CreateMessage(Message message)
         {
-            _accountContext.CreateMessage(new MessageDTO(message.MessageId, message.Text));
+            _messageContext.CreateMessage(new MessageDTO(message.MessageId, message.Text));
         }
     }
 }
