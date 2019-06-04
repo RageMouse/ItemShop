@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 using DAL.Interface.DTOs;
 using DAL.Interface.Interfaces;
@@ -50,6 +51,19 @@ namespace Logic.Collections
             }
 
             return auctions;
+        }
+
+        public decimal SuggestPrice(Auction auction)
+        {
+            /*todo write algoritm
+             *step 1: Gemiddelde verkoopsprijs van alle afgeronden met hetzelfde item berekenen.
+             *step 2: Bereken standard deviatie van deze verkoopprijs.
+             *step 3: Hoeveelheid open Auctions van hetzelfde item word optellen.
+             *step 4: 5 categorieen van hoeveelheid open Auctions, heel weinig, weinig, neutraal, veel, heel veel.
+             *step 5: Gemiddelde verkooprpijs van stap 1 verekenen met de categorieen uit step 4.
+             */
+
+
         }
     }
 }

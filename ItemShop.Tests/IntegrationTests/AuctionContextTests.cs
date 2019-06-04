@@ -24,7 +24,7 @@ namespace ItemShop.Test.IntegrationTests
             Auction auction = new Auction(0, DateTime.Now, false, DateTime.MaxValue, 30, 50, 1);
             //Act
             auctionCollection.CreateAuction(auction);
-            //Assert, ItemId is unique enough to have just 1 assert.
+            //Assert, todo need to change it so it checks if a row exists.
             Assert.AreEqual(auction, auctionCollection.GetById(2));
         }
     }
