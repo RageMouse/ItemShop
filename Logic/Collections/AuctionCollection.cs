@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using DAL.Interface.DTOs;
@@ -55,6 +56,15 @@ namespace Logic.Collections
 
         public decimal SuggestPrice(Auction auction)
         {
+            decimal averagePrice = _auctionContext.AverageSoldPrice();
+            List<decimal> soldPricesList = _auctionContext.GetAllSoldPrices();
+
+            decimal sumOfSquaresOfDifferences = soldPricesList.Select(val => (val - averagePrice) * (val - averagePrice)).Sum();
+            double standardDeviation = Math.Sqrt((double) (sumOfSquaresOfDifferences / soldPricesList.Count));
+
+            int openAuctions = _auctionContext.OpenAuctions(auction.ItemId);
+
+            decimal omega =0;
             /*todo write algoritm
              *step 1: Gemiddelde verkoopsprijs van alle afgeronden met hetzelfde item berekenen.
              *step 2: Bereken standard deviatie van deze verkoopprijs.
@@ -62,8 +72,7 @@ namespace Logic.Collections
              *step 4: 5 categorieen van hoeveelheid open Auctions, heel weinig, weinig, neutraal, veel, heel veel.
              *step 5: Gemiddelde verkooprpijs van stap 1 verekenen met de categorieen uit step 4.
              */
-
-
+            return omega;
         }
     }
 }

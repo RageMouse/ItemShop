@@ -14,6 +14,10 @@ namespace ItemShop.Test.IntegrationTests
     public class AuctionContextTests
     {
         public readonly string connString = "Server=localhost;Database=AuctionHouseDB;Integrated Security=SSPI;";
+        public readonly string connString2 = "Server=mssql.fhict.local;Database=dbi387022;User Id=dbi387022;Password=yoloswag1337";
+
+
+
 
         [TestMethod]
         public void CreateAuction()
@@ -24,6 +28,19 @@ namespace ItemShop.Test.IntegrationTests
             Auction auction = new Auction(0, DateTime.Now, false, DateTime.MaxValue, 30, 50, 1);
             //Act
             auctionCollection.CreateAuction(auction);
+            //Assert, todo need to change it so it checks if a row exists.
+            Assert.AreEqual(auction, auctionCollection.GetById(2));
+        }
+
+        [TestMethod]
+        public void TestAlgoritm()
+        {
+            //Arrange
+            var testContext = new AuctionMSSQLContext(connString2);
+            AuctionCollection auctionCollection = new AuctionCollection(testContext);
+            Auction auction = new Auction(0, DateTime.Now, false, DateTime.MaxValue, 30, 50, 1);
+            //Act
+            auctionCollection.SuggestPrice(auction);
             //Assert, todo need to change it so it checks if a row exists.
             Assert.AreEqual(auction, auctionCollection.GetById(2));
         }

@@ -11,5 +11,8 @@ namespace DAL.Interface.Interfaces
         AuctionDTO GetById(int id);
         void Update(AuctionDTO auction);
         List<AuctionDTO> GetAllAuctions();
+        decimal AverageSoldPrice();
+        List<Decimal> GetAllSoldPrices();
+        int OpenAuctions(int id);
     }
 }

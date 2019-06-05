@@ -29,5 +29,20 @@ namespace DAL.Memory
         {
             throw new NotImplementedException();
         }
+
+        public decimal AverageSoldPrice()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<decimal> GetAllSoldPrices()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int OpenAuctions(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

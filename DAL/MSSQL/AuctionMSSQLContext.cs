@@ -101,5 +101,95 @@ namespace DAL.MSSQL
         {
             throw new NotImplementedException();
         }
+
+        public decimal AverageSoldPrice()
+        {
+            try
+            {
+                decimal averagePrice = 0;
+                using (var conn = new SqlConnection(_connString))
+                {
+                    conn.Open();
+                    using (SqlCommand command = new SqlCommand("GetAveragePrice", conn)
+                        {CommandType = CommandType.StoredProcedure})
+                    {
+                        foreach (DbDataRecord record in command.ExecuteReader())
+                        {
+                            averagePrice = (record.GetDecimal(record.GetOrdinal("AveragePrice")));
+                        }
+                    }
+                }
+
+                return averagePrice;
+            }
+            catch (Exception e)
+            {
+                //todo a good exception
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public List<decimal> GetAllSoldPrices()
+        {
+            try
+            {
+                List<decimal> soldPrices = new List<decimal>();
+                using (var conn = new SqlConnection(_connString))
+                {
+                    conn.Open();
+                    using (SqlCommand command = new SqlCommand("GetAllSoldPrices", conn)
+                        {CommandType = CommandType.StoredProcedure})
+                    {
+                        foreach (DbDataRecord record in command.ExecuteReader())
+                        {
+                            soldPrices.Add(record.GetDecimal(record.GetOrdinal("BuyoutPrice")));
+                        }
+
+                        ;
+                    }
+                }
+
+                return soldPrices;
+            }
+            catch (Exception e)
+            {
+                //todo a good exception
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public int OpenAuctions(int id)
+        {
+            try
+            {
+                int openAuctions = 0;
+                using (var conn = new SqlConnection(_connString))
+                {
+                    conn.Open();
+                    using (SqlCommand command = new SqlCommand("OpenAuctions", conn)
+                        {CommandType = CommandType.StoredProcedure})
+                    {
+                        command.Parameters.AddWithValue("@item_Id", id);
+
+                        foreach (DbDataRecord record in command.ExecuteReader())
+                        {
+                            openAuctions++;
+                        }
+
+                        ;
+                    }
+                }
+
+                return openAuctions;
+            }
+            catch (Exception e)
+            {
+                //todo a good exception
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }
