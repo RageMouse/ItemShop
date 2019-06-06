@@ -21,24 +21,28 @@ namespace Logic.Collections
 
         public void CreateAuction(Auction auction)
         {
-            _auctionContext.AddAuction(new AuctionDTO(auction.DateCreated, auction.Sold, auction.EndDateTime, auction.MinPrice, auction.BuyoutPrice, auction.ItemId));
+            _auctionContext.AddAuction(new AuctionDTO(auction.DateCreated, auction.Sold, auction.EndDateTime,
+                auction.MinPrice, auction.BuyoutPrice, auction.ItemId));
         }
 
         public Auction GetById(int id)
         {
             AuctionDTO auction = _auctionContext.GetById(id);
 
-            return new Auction(auction.AuctionId, auction.DateCreated, auction.Sold, auction.EndDateTime, auction.MinPrice, auction.BuyoutPrice, auction.ItemId);
+            return new Auction(auction.AuctionId, auction.DateCreated, auction.Sold, auction.EndDateTime,
+                auction.MinPrice, auction.BuyoutPrice, auction.ItemId);
         }
 
         public void Update(Auction auction)
         {
-            _auctionContext.Update(new AuctionDTO(auction.DateCreated, auction.Sold, auction.EndDateTime, auction.MinPrice, auction.BuyoutPrice, auction.ItemId));
+            _auctionContext.Update(new AuctionDTO(auction.DateCreated, auction.Sold, auction.EndDateTime,
+                auction.MinPrice, auction.BuyoutPrice, auction.ItemId));
         }
 
         internal Auction ConvertAuction(AuctionDTO auction)
         {
-            return new Auction(auction.AuctionId, auction.DateCreated, auction.Sold, auction.EndDateTime, auction.MinPrice, auction.BuyoutPrice, auction.ItemId);
+            return new Auction(auction.AuctionId, auction.DateCreated, auction.Sold, auction.EndDateTime,
+                auction.MinPrice, auction.BuyoutPrice, auction.ItemId);
         }
 
         public List<Auction> GetAllAuctions()
@@ -57,14 +61,27 @@ namespace Logic.Collections
         public decimal SuggestPrice(Auction auction)
         {
             decimal averagePrice = _auctionContext.AverageSoldPrice();
-            List<decimal> soldPricesList = _auctionContext.GetAllSoldPrices();
-
+            List<decimal> soldPricesList = _auctionContext.GetAllSoldPrices(auction.ItemId);
+            //todo 
             decimal sumOfSquaresOfDifferences = soldPricesList.Select(val => (val - averagePrice) * (val - averagePrice)).Sum();
+            //todo
             double standardDeviation = Math.Sqrt((double) (sumOfSquaresOfDifferences / soldPricesList.Count));
 
             int openAuctions = _auctionContext.OpenAuctions(auction.ItemId);
 
-            decimal omega =0;
+            /*
+             * Bepalen wat de ranges zijn.
+             * Switch
+             * -3 = -x3 standardDeviation
+             * -2 = -x2 standardDeviation
+             * -1 = =x1 standardDeviation
+             * 0 = neutraal = 1-5
+             * 1 = x1 standardDeviation
+             * 2 = x2 standardDeviation
+             * 3 = x3 standardDeviation
+             */
+
+            decimal omega = 0;
             /*todo write algoritm
              *step 1: Gemiddelde verkoopsprijs van alle afgeronden met hetzelfde item berekenen.
              *step 2: Bereken standard deviatie van deze verkoopprijs.

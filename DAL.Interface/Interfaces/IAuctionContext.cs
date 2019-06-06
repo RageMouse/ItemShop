@@ -12,7 +12,7 @@ namespace DAL.Interface.Interfaces
         void Update(AuctionDTO auction);
         List<AuctionDTO> GetAllAuctions();
         decimal AverageSoldPrice();
-        List<Decimal> GetAllSoldPrices();
+        List<Decimal> GetAllSoldPrices(int id);
         int OpenAuctions(int id);
     }
 }

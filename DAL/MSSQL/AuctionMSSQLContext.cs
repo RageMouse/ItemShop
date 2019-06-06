@@ -130,7 +130,7 @@ namespace DAL.MSSQL
             }
         }
 
-        public List<decimal> GetAllSoldPrices()
+        public List<decimal> GetAllSoldPrices(int id)
         {
             try
             {
@@ -141,6 +141,8 @@ namespace DAL.MSSQL
                     using (SqlCommand command = new SqlCommand("GetAllSoldPrices", conn)
                         {CommandType = CommandType.StoredProcedure})
                     {
+                        command.Parameters.AddWithValue("@item_Id", id);
+
                         foreach (DbDataRecord record in command.ExecuteReader())
                         {
                             soldPrices.Add(record.GetDecimal(record.GetOrdinal("BuyoutPrice")));

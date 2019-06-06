@@ -35,7 +35,7 @@ namespace DAL.Memory
             throw new NotImplementedException();
         }
 
-        public List<decimal> GetAllSoldPrices()
+        public List<decimal> GetAllSoldPrices(int id)
         {
             throw new NotImplementedException();
         }
