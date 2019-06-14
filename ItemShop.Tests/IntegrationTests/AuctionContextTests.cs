@@ -16,9 +16,6 @@ namespace ItemShop.Test.IntegrationTests
         public readonly string connString = "Server=localhost;Database=AuctionHouseDB;Integrated Security=SSPI;";
         public readonly string connString2 = "Server=mssql.fhict.local;Database=dbi387022;User Id=dbi387022;Password=yoloswag1337";
 
-
-
-
         [TestMethod]
         public void CreateAuction()
         {

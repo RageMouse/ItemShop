@@ -10,9 +10,11 @@ namespace DAL.Memory
     {
         public readonly List<AccountDTO> _accounts = new List<AccountDTO>();
 
-        public void CreateAccount(AccountDTO account)
+        public List<AccountDTO> CreateAccount(AccountDTO account)
         {
             _accounts.Add(account);
+
+            return _accounts;
         }
 
         public void RemoveAccount(AccountDTO account)

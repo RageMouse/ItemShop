@@ -69,6 +69,10 @@ namespace Logic.Collections
 
             int openAuctions = _auctionContext.OpenAuctions(auction.ItemId);
 
+            switch (openAuctions)
+            {
+                    
+            }
             /*
              * Bepalen wat de ranges zijn.
              * Switch
